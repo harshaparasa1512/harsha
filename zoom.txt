@@ -1,0 +1,340 @@
+yum install sos -y
+sosreport
+cd /var/tmp/
+tar -xvf sosreport-*.tar.xz (use appropriate foldername as per your system)
+vim sos.txt
+
+
+
+Q1. How to display the content of a file on your standard output device (monitor)
+
+Q2. Redirect the content of anaconda-ks.cfg file to <yourname>-ks.txt
+
+Q3. Login to your system as regular user (vagrant). 
+	a. redirect the output of the below command to a file named search-results.txt
+			
+				find /etc -name passwd > search-results.txt
+
+	b. redirect the errors of the below command to a file named errors.txt
+
+				find /etc -name passwd 2> error.txt
+
+	c. redirect entire output to a file named all-results.txt
+
+
+				find /etc -name passwd &> all-results.txt
+	command: find /etc -name passwd
+
+Q4. explain what is the use of the symbol pipe (|) in linux.
+
+
+
+
+
+sudo cat /var/log/yum.log |tail -3
+
+sudo cat /var/log/yum.log |head -3
+
+
+text redirection  symbol ">"       ""sudo cat /var/log/yum.log >/dev/null""
+
+
+discussion regarding | symbol
+
+
+
+less is command it shows one screen full of informations.
+
+sudo cat /var/log/yum.log | less
+
+count the total lines 
+
+ll | wc -c (character count)
+
+ll | wc -w  (word count)
+
+ll | wc -l (line count)
+
+sudo cat /var/log/yum.log | head
+
+sudo cat /var/log/yum.log | head -3
+
+last 3 lines
+=============
+sudo cat /var/log/yum.log | tail -3
+
+cat /var/log/yum.log >  /dev/null
+
+
+
+
+---------------------------------------------------------------------------------------------------------
+
+filesystem
+-------------
+
+it is a structured collectiono of files/folders on a disk.
+
+/ - root partition
+
+
+/boot  - contains files required to boot the systme.
+
+/etc - contains all configuration files.
+
+configuration files related to individual files.
+it is nothing but setting files.
+
+/home - contains the home directory of all users.
+
+/root - home directory of root user.
+
+/tmp - contains the temporary files/directories
+
+/dev - contains the device files.
+
+/var  - contains the files/directories which are 	variable in nature.
+
+/run - contains all runtime information.
+
+/sbin - which contains commands used by super user.
+
+/bin  - contains commands used by non-root users.
+
+/usr - contains user data/3rd party application 	data. 
+
+/lib - contains all the libraries.
+
+
+--------------------------------------------------------------------------------------------------------------------
+
+
+
+File system
+
+it is astructured collection of files/direcctories on a disk
+
+/ - root partition
+
+/boot - contains the files required to boot the system
+
+/etc - contains all configuration
+
+/home - contains the home direcotry of all users
+
+/root - home directory of root user
+
+/tmp - contains the temporary files/directoris
+
+/dev - contains the deviles files
+
+/var - contains all the file/dirs which are variable in nature
+
+/run - contains all runtime information
+
+/sbin - which contains commands used super user
+
+/bin - contains commands used by non root users
+
+/usr - contains user data/3rd party application data
+
+/lib - contains all libraries
+
+Paths in linux
+---------------
+
+absolute path
+relative path
+
+. presents present directory
+
+.. presents parent directory
+
+/ can be root directory (also works a a seprator in directory hierarchy)
+
+File Globbing
+-------------
+
+* - any string or 0 or more character
+
+? - any single character
+
+~ - users home directory
+
+^ - first character of a string/sentence
+
+$ - end charcter of a string/sentence
+
+\t - tab
+
+\n - new line
+
+Authentication and Autheriation
+-------------------------------
+
+Authentication - Identification of user
+
+Autherization - permissions given to the user
+
+userdd - creates a user
+	#useradd harsha
+
+passwd - to set a password for a user
+	#passwd harsha
+
+su - username - switches the user
+
+related file
+------------
+
+/etc/passwd - contains all the details of a user
+
+username
+encrypted password
+userid
+groupid
+home directory
+login shell
+
+/etc/shadow - contains the encrypted password
+
+/etc/group - contains the group name and group id
+
+usermod - changes user's attributes
+
+groupadd - add a new group
+
+groupmod - changes group's attributes
+
+
+permissions
+-----------
+
+the first character of ls -l command tells type of the file
+- : regular text file
+b : block file
+c: character file
+d: directory
+l: link file
+s: socket file
+p: piped file
+
+file <filename> - tells you what type of the file is
+
+--- --- ---
+rwx rwx rwx
+421 421 421
+7   7   7
+
+what is the default permission of a folder and a file?
+
+default for a nonroot user
+664 file
+775 folder
+
+default for a root user
+644 file
+755 folder
+
+chmod 777 myscripts
+
+change permissions of a directory and its subdirectory to 755
+
+special Permissions 
+--------------------
+
+suid - S, 
+stickybit - t
+
+
+
+
+
+-------------------------------------------------------------------------------------------
+
+
+
+Process - running program
+
+pid - process id
+ppid - parent process id
+user - who runs the process
+time - duration the process is running
+command - what command created the process
+tty - which terminla the process is running
+
+pid 1 - initial process of the system started by systemd
+
+state of the process
+	running - R
+	sleeping - S
+	Zombie - Z
+	Stopped - T
+
+top - shows the live process information
+
+uptime - to see the duration the system is up and running along with load average
+
+kill - kills a process
+
+kill needs a signal to execute
+1- HUP - Hangup
+2 - INT - keyboard interrupt
+3 - Quit - keyboard quit
+9 - kill
+
+Service or Daemons
+-------------------
+
+service - a service is an applicaiton that runs in background. they can be managed
+
+systemctl - lists all services and their status on the system
+
+systemctl status/start/stop/restart <service name>
+
+systemctl enable/disable <service name>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Read the release notes of kernel 5.14.14 and list out major changes that has been implemented
+Read the release notes of kernel 5.14.14 and list out major changes that has been implemented
+Read the release notes of kernel 5.14.14 and list out major changes that has been implemented
+Compare the kernel 5.14.14 with the previous kernel (2 releases) and find out differences
+Upgrade all your systems (master, node1 and node2) to 7.9 with kernel 5.14.14
+
+
+
+
+---------------------------------------------------------------------------
+jenkins 
+
+
+wget -O /etc/yum.repos.d/jenkins.repo https://pkg.jenkins.io/redhat-stable/jenkins.repo
+rpm --import https://pkg.jenkins.io/redhat-stable/jenkins.io.key
+yum install jenkins
+systemctl start jenkins
+systemctl enable jenkins
+ 
+installation steps
+
+
+------------------------------------------------------------------------------------------
